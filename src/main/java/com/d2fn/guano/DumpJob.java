@@ -4,8 +4,8 @@ import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
+import org.apache.zookeeper.data.Stat;
 
-import java.io.*;
 import java.util.List;
 
 /**
@@ -80,8 +80,9 @@ public class DumpJob implements Job, Watcher {
     }
 
     private void writeZnode(ZooKeeper zk, String outFile, String znode) throws Exception {
-        byte[] data = zk.getData(znode, false, null);
-        if(data != null && data.length > 0) {
+        Stat stat = new Stat();
+        byte[] data = zk.getData(znode, false, stat);
+        if(data != null && data.length > 0 && stat.getEphemeralOwner() == 0) {
             String str = new String(data);
             if(!str.equals("null")) {
                 FileOutputStream out = new FileOutputStream(outFile);
