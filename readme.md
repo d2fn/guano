@@ -1,10 +1,13 @@
 NAME
+
      guano -- dump or restore Zookeeper trees
 
 SYNOPSIS
+
      guano [operands ...]
 
 DESCRIPTION
+
      This tool dumps and restores zookeeper state to/from a matching folder structure on disk.
      The server argument is mandatory then either a node to dump and where to dump it,
      or a previous dump to restore and the root to restore it to.
