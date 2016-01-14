@@ -1,8 +1,8 @@
 NAME
-     dd -- convert and copy a file
+     guano -- dump or restore Zookeeper trees
 
 SYNOPSIS
-     dd [operands ...]
+     guano [operands ...]
 
 DESCRIPTION
      This tool dumps and restores zookeeper state to/from a matching folder structure on disk.
