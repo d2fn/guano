@@ -1,3 +1,5 @@
+[ ![Download](https://api.bintray.com/packages/feldoh/Guano/guano/images/download.svg) ](https://bintray.com/feldoh/Guano/guano/_latestVersion)
+
 NAME
 
      guano -- dump or restore Zookeeper trees
@@ -32,4 +34,7 @@ DESCRIPTION
       Note: When restoring you need to provide one level up as the node selected for the dump is included.
         e.g. java -jar target/guano-0.1a.jar -s "zookeeper-01.mydomain.com" -o "/tmp/zkdump" -d "/myroot"
              java -jar target/guano-0.1a.jar -s "zookeeper-01.mydomain.com" -i "/tmp/zkdump" -r "/"
+             
+PREBUILT BINARIES
 
+     Pre-built binaries are available for most common platforms on Bintray
