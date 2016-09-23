@@ -1,4 +1,4 @@
-[ ![Download](https://api.bintray.com/packages/feldoh/Guano/guano/images/download.svg) ](https://bintray.com/feldoh/Guano/guano/_latestVersion)
+[ ![Download](https://api.bintray.com/packages/feldoh/Guano/guano/images/download.svg) ](https://bintray.com/feldoh/Guano/guano/_latestVersion) [![Build Status](https://travis-ci.org/feldoh/guano.svg?branch=master)](https://travis-ci.org/feldoh/guano)
 
 NAME
 
