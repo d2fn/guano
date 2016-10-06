@@ -64,13 +64,8 @@ public class DumpJob implements Job, Watcher {
         if(!children.isEmpty()) {
 
             // ensure parent dir is created
-            File f = new File(outputPath);
-            if(!f.exists() ) {
-                boolean s = f.mkdirs();
-                if (s) {
-                    System.out.println("Created folder: " + outputPath);
-                }
-            }
+            createFolder(outputPath);
+
             // this znode is a dir, so ensure the directory is created and build a __znode value in its dir
             writeZnode(zk, outputPath + "/_znode", currznode);
 
@@ -98,17 +93,22 @@ public class DumpJob implements Job, Watcher {
             }
         } else {
             if (!outFile.contains("_znode") && stat.getEphemeralOwner() == 0) {
-                // Create an empty folder for Ephemeral nodes.
-                File f = new File(outFile);
-                if(!f.exists() ) {
-                    boolean s = f.mkdirs();
-                    if (s) {
-                        System.out.println("Created Empty folder: " + outFile);
-                    }
-                }
+                // Create an empty folder for Permanent nodes.
+                createFolder(outFile);
             }
 
         }
+    }
+
+    private void createFolder(String path) {
+        File f = new File(path);
+        if(!f.exists() ) {
+            boolean s = f.mkdirs();
+            if (s) {
+                System.out.println("Created folder: " + path);
+            }
+        }
+
     }
 
     @Override
