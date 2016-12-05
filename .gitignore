@@ -1,0 +1,11 @@
+.project
+.settings
+/target
+.checkstyle
+.idea
+*.iml
+/vagrant/.vagrant
+/vagrant/ansible
+.classpath
+/bin
+
