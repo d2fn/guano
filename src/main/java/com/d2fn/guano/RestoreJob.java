@@ -1,10 +1,8 @@
 package com.d2fn.guano;
 
 import org.apache.zookeeper.*;
-import org.apache.zookeeper.data.ACL;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -55,16 +53,12 @@ public class RestoreJob implements Job, Watcher, FSVisitor {
      */
     @Override
     public void visit(File f, byte[] data, String znode) {
-//        System.out.println(f.getPath());
-//        System.out.println(" -> " + znode);
         createOrSetZnode(data, znode);
     }
 
     private void createOrSetZnode(byte[] data, String znode) {
         try {
             String s = zk.create(znode, data, ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
-        } catch (KeeperException.NoNodeException e) {
-            e.printStackTrace(System.err);
         } catch (KeeperException.NodeExistsException e) {
             try {
                 byte[] zdata = zk.getData(znode, false, null);
@@ -74,15 +68,11 @@ public class RestoreJob implements Job, Watcher, FSVisitor {
             } catch (Exception e2) {
                 e2.printStackTrace(System.err);
             }
-        } catch (KeeperException e) {
-            e.printStackTrace(System.err);
-        } catch (InterruptedException e) {
+        } catch (KeeperException | InterruptedException e) {
             e.printStackTrace(System.err);
         }
     }
 
     @Override
-    public void process(WatchedEvent watchedEvent) {
-        ;;
-    }
+    public void process(WatchedEvent watchedEvent) {}
 }

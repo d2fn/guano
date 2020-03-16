@@ -5,5 +5,5 @@ package com.d2fn.guano;
  * @author Dietrich Featherston
  */
 public interface Job {
-    public void go();
+    void go();
 }
