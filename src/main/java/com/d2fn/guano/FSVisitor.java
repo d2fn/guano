@@ -7,5 +7,5 @@ import java.io.File;
  * @author Dietrich Featherston
  */
 public interface FSVisitor {
-    public void visit(File f, byte[] data, String znode);
+    void visit(File f, byte[] data, String znode);
 }

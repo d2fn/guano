@@ -14,7 +14,6 @@ public class Guano implements Job {
     private Job job;
 
     public Guano(Options options, CommandLine cmd) {
-//        buildJob(cmd)
         this.options = options;
         this.cmd = cmd;
         buildJob();
@@ -34,7 +33,7 @@ public class Guano implements Job {
 
         String server = cmd.getOptionValue("s");
 
-        // dump?
+        // dump
         if(cmd.hasOption("d") && cmd.hasOption("o")) {
             String znode = cmd.getOptionValue("d");
             String outputDir = cmd.getOptionValue("o");
@@ -63,6 +62,8 @@ public class Guano implements Job {
         try {
             cmd = parser.parse(options, args);
         } catch (ParseException e) {
+            System.out.println("There was an exception in parsing\n" + e.toString());
+            System.out.println("Valid options:");
             usage(options);
         }
 
