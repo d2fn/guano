@@ -84,16 +84,21 @@ public class DumpJob implements Job, Watcher {
     private void writeZnode(ZooKeeper zk, String outFile, String znode) throws Exception {
         Stat stat = new Stat();
         byte[] data = zk.getData(znode, false, stat);
+
+        FileOutputStream out = new FileOutputStream(outFile);
+
         if(data != null && data.length > 0 && stat.getEphemeralOwner() == 0) {
-            String str = new String(data);
+            String str = new String(data); //Also what about data that can't be string? are there such cases?
             if(!str.equals("null")) {
                 FileOutputStream out = new FileOutputStream(outFile);
                 out.write(data);
-                out.flush();
-                out.close();
             }
         }
+
+        out.flush();
+        out.close();
     }
+
 
     @Override
     public void process(WatchedEvent watchedEvent) {}
